@@ -3,7 +3,9 @@ export default {
   template: `
   <section class="show-time-container">
   <h2>Show time</h2>
-      <section v-on:click="isDark = !isDark" class="show-time" v-bind:class="{dark:isDark}" >
+      <section v-on:click="toggleDark" 
+      class="show-time" 
+      v-bind:class="darkMode" >
           <img :src="imgUrl" alt="">
           <h3>{{ currTime }}</h3>
         </section>
@@ -15,20 +17,23 @@ export default {
       imgUrl: this.currImg(),
       isDark: false,
     }
-},
-created() {
+  },
+  created() {
     setInterval(() => {
-        this.time = new Date()
+      this.time = new Date()
     }, 1000)
-},
-methods: {
+  },
+  methods: {
     currImg() {
-        const month = new Date().getMonth()
+      const month = new Date().getMonth()
       if (month > 10 && month < 2) return "/imgs/winter.png"
       if (month > 1 && month < 5) return "/imgs/spring.png"
       if (month > 4 && month < 8) return "/imgs/summer.png"
       return "/imgs/autumn.png"
     },
+    toggleDark() {
+        this.isDark = !this.isDark
+    }
   },
   computed: {
     currMonth() {
@@ -37,6 +42,10 @@ methods: {
     currTime() {
       return this.time.toLocaleTimeString()
     },
+    darkMode() {
+        return {dark: this.isDark}
+    }
+
   },
   destroyed() {},
 }

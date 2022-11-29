@@ -1,8 +1,15 @@
-h1{
+/* h1{
     background-color: rgb(241, 195, 203);
+} */
+
+html{
+    
+    text-align: center;
 }
 
 .show-time-container{
+    margin: auto;
+    width: 200px;
     text-align: center;
 }
 
@@ -12,12 +19,20 @@ h1{
 
 .show-time{
     background-color:rgb(171, 201, 211);
-    text-align: center;
-    width: 200px;
-    margin: auto;
     border: 2px solid black;
 }
 
 .dark {
     background-color: blue;
+}
+
+.low {
+    color: red;
+}
+
+.count-down-container {
+    margin: auto;
+    font-weight: bold;
+    width: 200px;
+    background-color: rgb(198, 198, 198);
 }
